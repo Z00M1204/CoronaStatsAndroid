@@ -8,10 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.jjoe64.graphview.GraphView;
+
+import pl.droidsonroids.gif.GifDrawable;
+import pl.droidsonroids.gif.GifImageView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,8 +34,15 @@ public class MainActivity extends AppCompatActivity {
     ImageButton btsearch;
 
     LinearLayout lnlayoutmain;
+    LinearLayout lnlayoutdata;
+
+    ImageView imgloading;
 
     ApiClass ApiClassCall = new ApiClass();
+
+
+
+    ExtraLogicClass extraLogicClass = new ExtraLogicClass();
 
 
 
@@ -56,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
         btsearch = findViewById(R.id.btsearch);
 
         lnlayoutmain = findViewById(R.id.lnlayoutmain);
+        lnlayoutdata = findViewById(R.id.lnlayoutdata);
+
+        imgloading = findViewById(R.id.imgloading);
 
         startCall();
 
@@ -69,24 +83,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void searchClicked() {
+
+        //getting searchquery to then pass to ApiClass later
         String searchquery = edtxsearch.getText().toString();
         ApiClassCall.MainApiCall(searchquery, txtotalcases, txnewcases, txactivecases, txtotaldeaths, txnewdeaths, txtotalrecovered, txcountry);
 
-        maingraph.setVisibility(View.INVISIBLE);
-
-        //converting to dp
+        //I have to get the scale for converting to dp from here, since passing context to a class can lead to memory leaks
         final float scale = getResources().getDisplayMetrics().density;
-        int dp = (int) (120 * scale + 0.5f);
 
-        lnlayoutmain.getLayoutParams().height = dp;
-
+        //calling method to make the graph invisible, because the API i'm using doesn't provide historical coronavirus data for all countries
+        extraLogicClass.setGraphInvisible(lnlayoutmain, maingraph, scale);
 
 
     }
 
     public void startCall() {
 
-        ApiClassCall.Graphcall(maingraph);
+        ApiClassCall.Graphcall(maingraph, lnlayoutdata, imgloading);
 
 
         ApiClassCall.MainApiCall("Denmark", txtotalcases, txnewcases, txactivecases, txtotaldeaths, txnewdeaths, txtotalrecovered, txcountry);

@@ -1,9 +1,11 @@
 package com.example.coronastats;
 
-import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.jjoe64.graphview.GraphView;
@@ -14,9 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONStringer;
 
-import java.io.Console;
 import java.io.IOException;
 
 import okhttp3.Call;
@@ -29,8 +29,11 @@ public class ApiClass{
 
     OkHttpClient client = new OkHttpClient();
 
+    ExtraLogicClass extraLogicClass = new ExtraLogicClass();
 
-    public void Graphcall (final GraphView maingraph) {
+
+
+    public void Graphcall (final GraphView maingraph, final LinearLayout lnlayoutdata, final ImageView imgloading) {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -57,6 +60,7 @@ public class ApiClass{
                                     new Handler(Looper.getMainLooper()).post(new Runnable() {
                                         public void run() {
                                             try {
+
 
                                                 String myresponse = response.body().string();
 
@@ -100,9 +104,16 @@ public class ApiClass{
 
 
 
-                                                GraphClass GraphClassCall = new GraphClass();
+                                                final GraphClass GraphClassCall = new GraphClass();
 
                                                 GraphClassCall.setUpGraph(maingraph, mainseries);
+
+                                                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                       extraLogicClass.setGraphVisible(imgloading, lnlayoutdata);
+                                                    }
+                                                });
 
 
                                             } catch (JSONException | IOException j) {
@@ -163,14 +174,18 @@ public class ApiClass{
                                         public void run() {
                                             try {
 
+                                                if (CountryCode == "Denmark") {
+
+                                                }
+
                                                 JSONObject txobj = new JSONObject(response.body().string());
-                                                final String casesstring = txobj.getString("Total Cases_text");
-                                                final String deathsstring = txobj.getString("Total Deaths_text");
-                                                final String countrystring = txobj.getString("Country_text");
-                                                final String recoveriesstring = txobj.getString("Total Recovered_text");
-                                                final String activestring = txobj.getString("Active Cases_text");
-                                                final String newcasesstring = txobj.getString("New Cases_text");
-                                                final String newdeathsstring = txobj.getString("New Deaths_text");
+                                                final String casesstring = extraLogicClass.getNA(txobj.getString("Total Cases_text"));
+                                                final String deathsstring = extraLogicClass.getNA(txobj.getString("Total Deaths_text"));
+                                                final String countrystring = extraLogicClass.getNA(txobj.getString("Country_text"));
+                                                final String recoveriesstring = extraLogicClass.getNA(txobj.getString("Total Recovered_text"));
+                                                final String activestring = extraLogicClass.getNA(txobj.getString("Active Cases_text"));
+                                                final String newcasesstring = extraLogicClass.getNA(txobj.getString("New Cases_text"));
+                                                final String newdeathsstring = extraLogicClass.getNA(txobj.getString("New Deaths_text"));
 
                                                 txtotalcases.setText(casesstring);
                                                 txtotaldeaths.setText(deathsstring);

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/HomescreenBg"
     tools:context=".MainActivity">
 
 
@@ -12,10 +13,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+
 
                 <TextView
                     android:id="@+id/txcountry"
@@ -26,7 +31,7 @@
                     android:fontFamily="@font/roboto_bold"
                     android:paddingTop="15dp"
                     android:text="World"
-                    android:textColor="@android:color/background_dark"
+                    android:textColor="#E6FFFFFF"
                     android:textSize="35dp" />
 
                 <LinearLayout
@@ -43,7 +48,8 @@
                         android:layout_height="match_parent"
                         android:background="@android:color/transparent"
                         android:hint="Search"
-                        android:textColorHint="#E6000000"
+                        android:textColor="@color/TextColor"
+                        android:textColorHint="#E6FFFFFF"
                         android:layout_marginLeft="10dp"
                         />
 
@@ -55,269 +61,301 @@
                         android:background="@android:color/transparent"/>
 
 
-                </LinearLayout>
 
+
+
+                    </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/lnlayoutmain"
-                    android:layout_width="290dp"
-                    android:layout_height="248dp"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="30dp"
-                    android:background="@drawable/graph_bg"
-                    android:orientation="vertical">
+                    android:id="@+id/lnlayoutdata"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:orientation="vertical"
+                    android:layout_gravity="center">
+
+
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
+                        android:id="@+id/lnlayoutmain"
+                        android:layout_width="290dp"
+                        android:layout_height="248dp"
                         android:layout_gravity="center"
-
+                        android:layout_marginBottom="30dp"
+                        android:background="@drawable/graph_bg"
                         android:orientation="vertical">
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
                             android:layout_gravity="center"
-                            android:fontFamily="@font/roboto_bold"
-                            android:paddingTop="25dp"
-                            android:text="Total Cases"
-                            android:textColor="#CCFFFFFF"
 
-                            android:textSize="12dp" />
+                            android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/txtotalcases"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/roboto_bold"
+                                android:paddingTop="25dp"
+                                android:text="Total Cases"
+                                android:textColor="#CCFFFFFF"
 
-                            android:layout_marginBottom="30dp"
-                            android:fontFamily="@font/roboto_bold"
-                            android:paddingTop="5dp"
-                            android:text="10000000"
-                            android:textColor="#FFFFFF"
+                                android:textSize="12dp" />
 
-                            android:textSize="30dp" />
+                            <TextView
+                                android:id="@+id/txtotalcases"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:layout_marginBottom="30dp"
+                                android:fontFamily="@font/roboto_bold"
+                                android:paddingTop="5dp"
+                                android:text="10000000"
+                                android:textColor="#FFFFFF"
+
+                                android:textSize="30dp" />
+
+                        </LinearLayout>
+
+
+                        <com.jjoe64.graphview.GraphView
+                            android:id="@+id/maingraph"
+                            android:layout_width="250dp"
+                            android:layout_height="113dp"
+                            android:layout_gravity="center" />
+
 
                     </LinearLayout>
 
+                    <RelativeLayout
+                        android:layout_width="290dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="30dp"
 
-                    <com.jjoe64.graphview.GraphView
-                        android:id="@+id/maingraph"
-                        android:layout_width="250dp"
-                        android:layout_height="113dp"
-                        android:layout_gravity="center" />
+
+                        android:background="@drawable/graph_bg"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/roboto_bold"
+                                android:paddingTop="25dp"
+                                android:text="New Cases"
+                                android:textColor="#CCFFFFFF"
+
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:id="@+id/txnewcases"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="30dp"
+                                android:fontFamily="@font/roboto_bold"
+                                android:paddingTop="5dp"
+                                android:text="10000000"
+                                android:textColor="#FFFFFF"
+                                android:textSize="30dp" />
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="290dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="30dp"
+
+                        android:background="@drawable/graph_bg"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/roboto_bold"
+                                android:paddingTop="25dp"
+                                android:text="Active Cases"
+                                android:textColor="#CCFFFFFF"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:id="@+id/txactivecases"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="30dp"
+                                android:fontFamily="@font/roboto_bold"
+                                android:paddingTop="5dp"
+                                android:text="10000000"
+                                android:textColor="#FFFFFF"
+                                android:textSize="30dp" />
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="290dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="30dp"
+
+                        android:background="@drawable/graph_bg"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/roboto_bold"
+                                android:paddingTop="25dp"
+                                android:text="Total Deaths"
+                                android:textColor="#CCFFFFFF"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:id="@+id/txtotaldeaths"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="30dp"
+                                android:fontFamily="@font/roboto_bold"
+                                android:paddingTop="5dp"
+                                android:text="10000000"
+                                android:textColor="#FFFFFF"
+                                android:textSize="30dp" />
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="290dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="30dp"
+
+                        android:background="@drawable/graph_bg"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/roboto_bold"
+                                android:paddingTop="25dp"
+                                android:text="New Deaths"
+                                android:textColor="#CCFFFFFF"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:id="@+id/txnewdeaths"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="30dp"
+                                android:fontFamily="@font/roboto_bold"
+                                android:paddingTop="5dp"
+                                android:text="10000000"
+                                android:textColor="#FFFFFF"
+                                android:textSize="30dp" />
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="290dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="30dp"
+
+                        android:background="@drawable/graph_bg"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/roboto_bold"
+                                android:paddingTop="25dp"
+                                android:text="Total Recovered"
+                                android:textColor="#CCFFFFFF"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:id="@+id/txtotalrecovered"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="30dp"
+                                android:fontFamily="@font/roboto_bold"
+                                android:paddingTop="5dp"
+                                android:text="10000000"
+                                android:textColor="#FFFFFF"
+                                android:textSize="30dp" />
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+
 
 
                 </LinearLayout>
 
-                <RelativeLayout
-                    android:layout_width="290dp"
-                    android:layout_height="120dp"
+                <ImageView
+                    android:id="@+id/imgloading"
+                    android:layout_width="200dp"
+                    android:layout_height="500dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="30dp"
+                    android:scaleY="2.5"
+                    android:scaleX="2.5"
 
 
-                    android:background="@drawable/graph_bg"
-                    android:orientation="vertical">
+                    android:src="@drawable/loading_illustration"
+                    />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:layout_gravity="center"
-                        android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/roboto_bold"
-                            android:paddingTop="25dp"
-                            android:text="New Cases"
-                            android:textColor="#CCFFFFFF"
-
-                            android:textSize="12dp" />
-
-                        <TextView
-                            android:id="@+id/txnewcases"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="30dp"
-                            android:fontFamily="@font/roboto_bold"
-                            android:paddingTop="5dp"
-                            android:text="10000000"
-                            android:textColor="#FFFFFF"
-                            android:textSize="30dp" />
-
-                    </LinearLayout>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="290dp"
-                    android:layout_height="120dp"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="30dp"
-
-                    android:background="@drawable/graph_bg"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:layout_gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/roboto_bold"
-                            android:paddingTop="25dp"
-                            android:text="Active Cases"
-                            android:textColor="#CCFFFFFF"
-                            android:textSize="12dp" />
-
-                        <TextView
-                            android:id="@+id/txactivecases"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="30dp"
-                            android:fontFamily="@font/roboto_bold"
-                            android:paddingTop="5dp"
-                            android:text="10000000"
-                            android:textColor="#FFFFFF"
-                            android:textSize="30dp" />
-
-                    </LinearLayout>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="290dp"
-                    android:layout_height="120dp"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="30dp"
-
-                    android:background="@drawable/graph_bg"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:layout_gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/roboto_bold"
-                            android:paddingTop="25dp"
-                            android:text="Total Deaths"
-                            android:textColor="#CCFFFFFF"
-                            android:textSize="12dp" />
-
-                        <TextView
-                            android:id="@+id/txtotaldeaths"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="30dp"
-                            android:fontFamily="@font/roboto_bold"
-                            android:paddingTop="5dp"
-                            android:text="10000000"
-                            android:textColor="#FFFFFF"
-                            android:textSize="30dp" />
-
-                    </LinearLayout>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="290dp"
-                    android:layout_height="120dp"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="30dp"
-
-                    android:background="@drawable/graph_bg"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:layout_gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/roboto_bold"
-                            android:paddingTop="25dp"
-                            android:text="New Deaths"
-                            android:textColor="#CCFFFFFF"
-                            android:textSize="12dp" />
-
-                        <TextView
-                            android:id="@+id/txnewdeaths"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="30dp"
-                            android:fontFamily="@font/roboto_bold"
-                            android:paddingTop="5dp"
-                            android:text="10000000"
-                            android:textColor="#FFFFFF"
-                            android:textSize="30dp" />
-
-                    </LinearLayout>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="290dp"
-                    android:layout_height="120dp"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="30dp"
-
-                    android:background="@drawable/graph_bg"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:layout_gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/roboto_bold"
-                            android:paddingTop="25dp"
-                            android:text="Total Recovered"
-                            android:textColor="#CCFFFFFF"
-                            android:textSize="12dp" />
-
-                        <TextView
-                            android:id="@+id/txtotalrecovered"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="30dp"
-                            android:fontFamily="@font/roboto_bold"
-                            android:paddingTop="5dp"
-                            android:text="10000000"
-                            android:textColor="#FFFFFF"
-                            android:textSize="30dp" />
-
-                    </LinearLayout>
-                </RelativeLayout>
 
             </LinearLayout>
         </ScrollView>

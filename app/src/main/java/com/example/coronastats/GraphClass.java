@@ -18,17 +18,14 @@ public class GraphClass{
 
     public void setUpGraph (GraphView maingraph, LineGraphSeries mainseries) {
 
-
-
         //Changing the style of the graph
-
 
         maingraph.getViewport().setScalable(true);
         maingraph.getGridLabelRenderer().setGridStyle(GridLabelRenderer.GridStyle.NONE);
         maingraph.getGridLabelRenderer().setVerticalLabelsVisible(false);
         maingraph.getGridLabelRenderer().setHorizontalLabelsVisible(false);
         maingraph.setBackgroundColor(Color.TRANSPARENT);
-        mainseries.setColor(Color.WHITE);
+        mainseries.setColor(Color.parseColor("#BB86FC"));
         mainseries.setDrawDataPoints(false);
         mainseries.setAnimated(true);
         mainseries.setThickness(6);

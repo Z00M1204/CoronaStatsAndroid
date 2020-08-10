@@ -16,6 +16,7 @@ import com.jjoe64.graphview.series.Series;
 
 public class GraphClass{
 
+    //this method is just used for setting up the GraphView library so it looks how i want it
     public void setUpGraph (GraphView maingraph, LineGraphSeries mainseries) {
 
         //Changing the style of the graph

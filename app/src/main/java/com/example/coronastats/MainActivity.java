@@ -40,13 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     ApiClass ApiClassCall = new ApiClass();
 
-
-
     ExtraLogicClass extraLogicClass = new ExtraLogicClass();
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,8 +65,10 @@ public class MainActivity extends AppCompatActivity {
 
         imgloading = findViewById(R.id.imgloading);
 
+        //calling the startCall method, so the data is shown when the app starts
         startCall();
 
+        //setting a new onclicklistener for the search ImageView
         btsearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,7 +93,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //this method is used for being called when the app starts
     public void startCall() {
+
 
         ApiClassCall.Graphcall(maingraph, lnlayoutdata, imgloading);
 
